@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Hash;
 
 class ApiController extends Controller
 {
@@ -17,7 +18,7 @@ class ApiController extends Controller
     	$user->role_id = 2;
     	$user->name    = $request->name;
     	$user->email   = $request->email;
-    	$user->password= $request->password;
+    	$user->password= Hash::make($request->password);
     	$user->mobile  = $request->mobile;
     	$user->save();
 
