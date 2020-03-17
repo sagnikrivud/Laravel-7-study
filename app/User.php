@@ -9,7 +9,7 @@ use Laravel\Passport\HasApiTokens;
 
 class User extends \TCG\Voyager\Models\User
 {
-    use Notifiable;
+     use Notifiable, HasApiTokens;
      //use HasApiTokens, Notifiable;
 
     /**

@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/user_store','ApiController@user_store')->name('user_store');
+Route::post('/user_login','ApiController@user_login')->name('user_login');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+   // return $request->user();
+//Route::post('/user_upload','ApiController@user_upload')->name('user_upload');    
+//Route::get('/user_profile','ApiController@user_profile')->name('user_profile');
 
 
-});
+//});
+Route::group(['middleware' => 'auth:api'], function(){
+Route::post('/user_upload','ApiController@user_upload')->name('user_upload'); 
+Route::get('/user_profile','ApiController@user_profile')->name('user_profile');
+	});
