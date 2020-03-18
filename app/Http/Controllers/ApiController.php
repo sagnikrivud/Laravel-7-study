@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Auth;
 //use App\OuthAccessToken;
 use Mail;
 use Validator;
+use App\Mail\InfoMail;
 //use App\OuthAccessToken;
+use Hash;
+//use Auth;
 
 class ApiController extends Controller
 {
@@ -29,6 +32,9 @@ class ApiController extends Controller
     	$user->password= Hash::make($request->password);
     	$user->mobile  = $request->mobile;
     	$user->save();
+
+      $email = 'nikita.wasnik@envertis.com.au';
+      Mail::to($email)->send(new InfoMail($email));
 
     	return response()->json([
     		'message'  => 'New User Registered Successfully',
@@ -80,7 +86,7 @@ class ApiController extends Controller
      }
 
 
-     //---------------------Profile View--------------//
+     //------------------------Profile View--------------------------//
        public function user_profile() 
     { 
         $user = Auth::user(); 
