@@ -1,73 +1,57 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <!-- <link rel="stylesheet" href="Style.css"> -->
+        <link href="{{asset('css/login.css')}}" rel="stylesheet">
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  {{-- csrf attribute --}}
+  <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    </head>
+    <body>
+            <form class="Box" action="{{route('login')}}" method="POST" id="">
+            
+                @csrf
+                <div id="error" style="display: none"></div>
+                <h1>Login</h1>
+                <input type="text" name="email" placeholder="email" id="email">
+                <input type="password" name="password" placeholder="Password" id="password" onblur="logged()">
+                <input type="submit" value="Login" onclick="">
+                <a href="{{route('back')}}" class="back">Home</a>
+            </form>
+    </body>
+</html>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<script>
+    function logged()
+    {
+  // alert('hi');
+    var email     = $('#email').val();
+    var password  = $('#password').val();
+    var csrftoken = $('#csrf-token').attr('content');
+    $.ajax({
+        type    : "POST",
+        url     : "{{route('login_check')}}",
+        data    : {email:email, password:password, _token:csrftoken},
+        success : function(data)
+        {
+             if(data.trim()=='not')
+             {
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+            $('#error').show();
+            $('#error').html('<strong><font color="red">Not Match</font></strong>');
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+             }else{
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+            $('#error').show();
+            $('#error').html('<strong><font color="green">Match</font></strong>');
+             }
+        }
+    });
+    }
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+</script>
