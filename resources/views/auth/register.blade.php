@@ -1,77 +1,89 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+ <link href="{{asset('css/register.css')}}" rel="stylesheet">
+ <script type="text/javascript" src="{{asset('js/register.js')}}"></script>
+<body background="{{asset('images/source.gif')}}">
+<div class="row">
+  <section class="section">
+    <header>
+      <h3>Register</h3>
+      <h4>Please fill your information bellow</h4>
+    </header>
+    <main>
+      <form action="" method="post">
+        @csrf
+        <div class="form-item box-item">
+          <input type="text" name="name" placeholder="Name" data-required>
+          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
         </div>
-    </div>
+        <div class="form-item box-item">
+          <input type="email" name="email" placeholder="Email" data-email data-required>
+          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+          <small class="errorEmail"><i class="fa fa-asterisk" aria-hidden="true"></i> email is not valid</small>
+        </div>
+        <div class="form-item box-item">
+          <div class="form-item-triple">
+            <div class="radio-label"> 
+              <label class="label">Gender</label>
+            </div>
+            <div class="form-item"> 
+              <input id="Male" type="radio" name="gender" value="Male" data-once>
+              <label for="Male">Male</label>
+            </div>
+            <div class="form-item"> 
+              <input id="Female" type="radio" name="gender" value="Female" data-once>
+              <label for="Female">Female</label>
+            </div>
+          </div>
+          <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+        </div>
+        {{-- <div class="form-item box-item">
+          <div class="form-item-triple">
+            <div class="radio-label"> 
+              <label class="label">Type</label>
+            </div>
+            <div class="form-item"> 
+              <input id="sponsored" type="radio" name="gender2" value="sponsored" data-once>
+              <label for="sponsored">sponsored</label>
+            </div>
+            <div class="form-item"> 
+              <input id="paid" type="radio" name="gender2" value="paid" data-once>
+              <label for="paid">paid</label>
+            </div>
+          </div>
+          <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+        </div> --}}
+        <div class="form-item box-item">
+          <input type="text" name="address" placeholder="Address" data-required>
+          {{-- <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small> --}}
+        </div>
+        <div class="form-item-double box-item">
+         {{--  <div class="form-item ">
+            <input type="text" name="strNumber" placeholder="Str Number" data-required data-number>
+            <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+            <small class="errorNum"><i class="fa fa-asterisk" aria-hidden="true"></i> must be a number</small>
+          </div> --}}
+          <div class="form-item">
+            <input type="text" name="zCode" placeholder="Zip Code" data-required data-number>
+            {{-- <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+            <small class="errorNum"><i class="fa fa-asterisk" aria-hidden="true"></i> must be a number</small> --}}
+          </div>
+        </div>
+        <div class="form-item box-item">
+          <input type="text" name="phone" placeholder="Phone" data-required data-number data-count="10">
+        {{--   <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="false"></i> required field</small>
+          <small class="errorNum"><i class="fa fa-asterisk" aria-hidden="false"></i> must be a number</small>
+          <small class="errorChar"><i class="fa fa-asterisk" aria-hidden="false"></i> must be 10 digits</small> --}}
+        </div>
+        <div class="form-item">
+         {{--  <span>Submit</span> --}}
+         <input type="submit" name="" value="Submit"  id="submit" class="submit">
+        </div>
+      </form>
+    </main>
+    <footer>
+ @include('layouts/footer')
+    </footer>
+    
+    <i class="wave"></i>
+  </section>
 </div>
-@endsection
+</body>
