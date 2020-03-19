@@ -67,15 +67,16 @@
               <tr>
                 <th width="30%">Password</th>
                 <td width="2%">:</td>
-                <td><input type="Password" name="password" id="password"></td>
+                <td><input type="Password" name="password" id="password"><button type="button" onclick="up_password()" class="btn btn-success"><i class="fas fa-fist-raised"></i></button></td>
+
               </tr>
               <tr>
                 <th width="30%">Compition</th>
                 <td width="2%">:</td>
                 <td><select name="subject" id="subject" onchange="su_submit()">
                     <option>-Select-</option>
-                    <option value="1">Node-js</option>
-                    <option value="2">Cylon-js</option>
+                    <option value="Node-js">Node-js</option>
+                    <option value="Cylon-js">Cylon-js</option>
                 </select></td>
               </tr>
             </table>
@@ -99,18 +100,38 @@
         var csrf = $('#csrf-token').attr('content');
         $.ajax({
             type    : "post",
-            url     : "/action",
+            url     : "{{route('su_submit')}}",
             data    : {subject:subject, _token:csrf},
             success : function(data)
             {
 
             }
-        })
+        });
         swal("", "You have submitted your choise!", "success");
     }
 
     function allt()
     {
         swal("","You can't Edit your contact email","warning");
+    }
+
+    function up_password()
+    {
+        swal({
+  title: "",
+  text: "Are you sure to change password?",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    swal("You have changed your password.", {
+      icon: "success",
+    });
+  } else {
+    swal("Your Password is not change..!");
+  }
+})
     }
 </script>

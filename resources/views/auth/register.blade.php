@@ -8,7 +8,7 @@
       <h4>Please fill your information bellow</h4>
     </header>
     <main>
-<form action="{{route('register')}}" method="post" onsubmit="return form_submit()">
+<form action="{{route('create')}}" method="post">
         @csrf
         <div class="form-item box-item">
           <span id="error"></span>
@@ -59,7 +59,7 @@
         </div>
         <div class="form-item">
          {{--  <span>Submit</span> --}}
-         <input type="submit" name="" value="Submit" onclick="form_submit()"  id="submit" class="submit">
+         <input type="submit" name="" value="Submit" id="submit" class="submit">
         </div>
       </form>
     </main>

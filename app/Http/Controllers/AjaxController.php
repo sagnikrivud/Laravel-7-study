@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Hash;
+use Auth;
+use App\Subject;
 
 class AjaxController extends Controller
 {
@@ -29,6 +31,19 @@ class AjaxController extends Controller
 	  echo 'not';
     		
     	}
+
+    }
+
+
+    public function su_submit(Request $request)
+    {
+    	$user_id = Auth::user()->id;
+    	$subject = $request->subject;
+
+    	Subject::where('user_id',$user_id)->with('subject_user')->update([
+            'subject' => $subject
+    	]);
+
 
     }
 }
