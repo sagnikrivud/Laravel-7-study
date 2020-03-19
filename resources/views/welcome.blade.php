@@ -1,6 +1,6 @@
 <html data-wf-site="528e651363ab10ec42000100" class="wf-lato-n1-active wf-lato-n3-active wf-lato-n4-active wf-lato-n7-active wf-lato-n9-active wf-daysone-n4-active wf-active"><head>
   <meta charset="utf-8">
-  <title>Jorge Almeida | Web and UI Designer</title>
+  <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/webflow.css">
@@ -20,7 +20,9 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/528e651363ab10ec42000100/5297ae9b6614a1bf07000068_favicon.jpg">
   <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   <link rel="apple-touch-icon" href="https://y7v4p6k4.ssl.hwcdn.net/528e651363ab10ec42000100/5297ae946614a1bf07000067_webicon.png">
-<script type="text/javascript" src="https://apis.google.com/js/plusone.js" gapi_processed="true"></script><meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;GoogleFontApi&quot;:-1,&quot;jQuery&quot;:&quot;1.10.2&quot;,&quot;Plus1&quot;:-1}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script></head>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js" gapi_processed="true"></script><meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;GoogleFontApi&quot;:-1,&quot;jQuery&quot;:&quot;1.10.2&quot;,&quot;Plus1&quot;:-1}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script>
+</head>
+
 <body style="">
   <div class="section header" id="page-nav-top">
     <div class="w-row header">

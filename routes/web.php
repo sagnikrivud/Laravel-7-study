@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/back', 'Controller@back')->name('back');
 Route::post('/login','Auth\LoginController@login')->name('login');
 Route::post('/login_check','AjaxController@login_check')->name('login_check');
+Route::post('/logout','Auth\LoginController@logout')->name('logout');
 
 
 Route::group(['prefix' => 'admin'], function () {

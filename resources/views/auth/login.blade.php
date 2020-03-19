@@ -8,6 +8,7 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
   {{-- csrf attribute --}}
   <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
@@ -21,9 +22,11 @@
                 <input type="text" name="email" placeholder="email" id="email">
                 <input type="password" name="password" placeholder="Password" id="password" onblur="logged()">
                 <input type="submit" value="Login" onclick="">
-                <a href="{{route('back')}}" class="back">Home</a>
+                <a href="{{route('back')}}" class="back"><i class="fa fa-arrow-left" aria-hidden="false"></i></a>
+                  @include('layouts/footer')
             </form>
     </body>
+
 </html>
 
 <script>

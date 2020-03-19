@@ -8,74 +8,58 @@
       <h4>Please fill your information bellow</h4>
     </header>
     <main>
-      <form action="" method="post">
+<form action="{{route('register')}}" method="post" onsubmit="return form_submit()">
         @csrf
         <div class="form-item box-item">
-          <input type="text" name="name" placeholder="Name" data-required>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
+          <span id="error"></span>
+          <input type="text" name="name" placeholder="Name" id="name">
+         {{--  <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small> --}}
         </div>
         <div class="form-item box-item">
-          <input type="email" name="email" placeholder="Email" data-email data-required>
-          <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
-          <small class="errorEmail"><i class="fa fa-asterisk" aria-hidden="true"></i> email is not valid</small>
+          <span id="error"></span>
+          <input type="email" name="email" placeholder="Email" data-email data-required id="email">
         </div>
         <div class="form-item box-item">
           <div class="form-item-triple">
             <div class="radio-label"> 
               <label class="label">Gender</label>
+              <span id="error"></span>
             </div>
             <div class="form-item"> 
-              <input id="Male" type="radio" name="gender" value="Male" data-once>
+
+              <input id="gender" type="radio" name="gender" value="Male" data-once>
               <label for="Male">Male</label>
             </div>
             <div class="form-item"> 
-              <input id="Female" type="radio" name="gender" value="Female" data-once>
+
+            <input id="gender" type="radio" name="gender" value="Female" data-once>
               <label for="Female">Female</label>
             </div>
           </div>
-          <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+         {{--  <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small> --}}
         </div>
-        {{-- <div class="form-item box-item">
-          <div class="form-item-triple">
-            <div class="radio-label"> 
-              <label class="label">Type</label>
-            </div>
-            <div class="form-item"> 
-              <input id="sponsored" type="radio" name="gender2" value="sponsored" data-once>
-              <label for="sponsored">sponsored</label>
-            </div>
-            <div class="form-item"> 
-              <input id="paid" type="radio" name="gender2" value="paid" data-once>
-              <label for="paid">paid</label>
-            </div>
-          </div>
-          <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-        </div> --}}
+        
         <div class="form-item box-item">
-          <input type="text" name="address" placeholder="Address" data-required>
-          {{-- <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small> --}}
+          <span id="error"></span>
+          <input type="text" name="address" placeholder="Address" data-required id="address">
+      
         </div>
         <div class="form-item-double box-item">
-         {{--  <div class="form-item ">
-            <input type="text" name="strNumber" placeholder="Str Number" data-required data-number>
-            <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
-            <small class="errorNum"><i class="fa fa-asterisk" aria-hidden="true"></i> must be a number</small>
-          </div> --}}
+       
           <div class="form-item">
-            <input type="text" name="zCode" placeholder="Zip Code" data-required data-number>
-            {{-- <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="true"></i> required field</small>
-            <small class="errorNum"><i class="fa fa-asterisk" aria-hidden="true"></i> must be a number</small> --}}
+            <span id="error"></span>
+            <input type="password" name="Password" placeholder="Password" data-required data-number id="password">
+            
           </div>
         </div>
         <div class="form-item box-item">
-          <input type="text" name="phone" placeholder="Phone" data-required data-number data-count="10">
-        {{--   <small class="errorReq"><i class="fa fa-asterisk" aria-hidden="false"></i> required field</small>
-          <small class="errorNum"><i class="fa fa-asterisk" aria-hidden="false"></i> must be a number</small>
-          <small class="errorChar"><i class="fa fa-asterisk" aria-hidden="false"></i> must be 10 digits</small> --}}
+          <span id="error"></span>
+          <input type="text" name="mobile" placeholder="Phone" data-required data-number data-count="10" id="mobile">
+        
         </div>
         <div class="form-item">
          {{--  <span>Submit</span> --}}
-         <input type="submit" name="" value="Submit"  id="submit" class="submit">
+         <input type="submit" name="" value="Submit" onclick="form_submit()"  id="submit" class="submit">
         </div>
       </form>
     </main>
@@ -87,3 +71,33 @@
   </section>
 </div>
 </body>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+  function form_submit() 
+  {
+    //alert('hi');
+  var name     = $('#name').val();
+  var email    = $('#email').val();
+  var gender   = $('#gender').val();
+  var address  = $('#address').val();
+  var password = $('#password').val();
+  var mobile   = $('#mobile').val(); 
+if(name=='' && email=='' && gender=='' && address=='' && password=='' && mobile=='') {
+    return false;
+    $('#error').show();
+    $('#error').html('<strong><font color="red">Please fill this</font></strong>');
+    
+
+        }else{
+
+    return true; 
+     $('#error').show();
+     $('#error').html('<strong>Please fill this</strong>');
+
+
+        }
+  }
+</script>
