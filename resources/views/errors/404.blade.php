@@ -5,6 +5,6 @@
 }
 </style>
 <center>
-<body background="{{asset('images/404.jpg')}}" style="background-repeat: no-repeat">
+<body background="{{asset('images/404.jpg')}}" style="background-repeat: no-repeat;background-size: cover;">
 	</center>
 </body>

@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 
 Route::post('/create','Auth\RegisterController@create')->name('create');
+Route::get('/the_about','AboutController@the_about')->name('the_about');
+Route::get('/contact_view','ContactController@contact_view')->name('contact_view');
+Route::post('/snet_contact','ContactController@snet_contact')->name('snet_contact');
 
 Auth::routes();
 

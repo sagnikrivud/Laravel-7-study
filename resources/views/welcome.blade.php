@@ -1,3 +1,4 @@
+@include('layouts/top_header')
 <html data-wf-site="528e651363ab10ec42000100" class="wf-lato-n1-active wf-lato-n3-active wf-lato-n4-active wf-lato-n7-active wf-lato-n9-active wf-daysone-n4-active wf-active"><head>
   <meta charset="utf-8">
   <title></title>
@@ -7,7 +8,8 @@
   <link rel="stylesheet" type="text/css" href="css/jorgealmeida.webflow.css">
   <script src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.fr.jCj8c77aZ-I.O/m=plusone/rt=j/sv=1/d=1/ed=1/am=IQ/rs=AItRSTOyb9DFxJR-oLMIoD6azhb9yGuJ3Q/cb=gapi.loaded_0" async=""></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script><style type="text/css"></style>
    <link href="{{asset('css/welcome.css')}}" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CDays+One:regular"><script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CDays+One:regular">
+  <script>
     WebFont.load({
       google: {
         families: ["Lato:100,300,400,700,900", "Days One:regular"]
@@ -21,9 +23,11 @@
   <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   <link rel="apple-touch-icon" href="https://y7v4p6k4.ssl.hwcdn.net/528e651363ab10ec42000100/5297ae946614a1bf07000067_webicon.png">
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js" gapi_processed="true"></script><meta name="chromesniffer" id="chromesniffer_meta" content="{&quot;GoogleFontApi&quot;:-1,&quot;jQuery&quot;:&quot;1.10.2&quot;,&quot;Plus1&quot;:-1}"><script type="text/javascript" src="chrome-extension://homgcnaoacgigpkkljjjekpignblkeae/detector.js"></script>
+
 </head>
 
 <body style="">
+
   <div class="section header" id="page-nav-top">
     <div class="w-row header">
       <div class="w-col w-col-3 logo-bar">
