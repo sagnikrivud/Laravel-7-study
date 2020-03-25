@@ -10,7 +10,7 @@ use App\Subject;
 
 class AjaxController extends Controller
 {
-    //
+    //----------------login credentials check--------------//
 
     function login_check(Request $request)
     {
@@ -34,6 +34,8 @@ class AjaxController extends Controller
 
     }
 
+    //-----------User subject update-----------------//
+
 
     public function su_submit(Request $request)
     {
@@ -45,5 +47,22 @@ class AjaxController extends Controller
     	]);
 
 
+    }
+
+        //--------------User passsword---------------//
+    public function user_update(Request $request)
+    {
+        $id       = Auth::user()->id;
+        $password = Hash::make($request->password);
+        $result =   User::where('id',$id)->update(['password',$password]); 
+            if ($result) 
+            {
+
+                echo 'success';
+
+            }else{
+                
+                echo 'wrong';
+            }
     }
 }

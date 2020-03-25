@@ -30,6 +30,10 @@ Route::get('/back', 'Controller@back')->name('back');
 Route::post('/login','Auth\LoginController@login')->name('login');
 Route::post('/login_check','AjaxController@login_check')->name('login_check');
 Route::post('/logout','Auth\LoginController@logout')->name('logout');
+Route::post('/user_update','AjaxController@user_update')->name('user_update');
+           // --------------course------------------//
+Route::get('/node_home','UserController@node_home')->name('node_home');
+Route::get('/cylon_home','UserController@cylon_home')->name('cylon_home');
 
 
 Route::group(['prefix' => 'admin'], function () {

@@ -10,8 +10,8 @@
     float: left" /> --}}
     <button type="submit" class="btn" style="float: left" name="submit"><i class="fa fa-paper-plane" aria-hidden="false"></i></button>
     <a href="{{URL::to('/')}}" class="btn" style="width: 95px; height: 22px; float: left;"><i class="far fa-hand-point-left" style="float: right;"></i></a>
-
-</form>
-<div class="footer">
+<div class="footer" style="float: left;">
  @include('layouts/footer')
 </div>
+</form>
+

@@ -14,10 +14,19 @@
             <h3>{{Auth::user()->name}}</h3>
 
           </div>
-          <div class="card-body">
+          {{-- <div class="card-body">
             <p class="mb-0"><strong class="pr-1">Student ID:</strong>321000001</p>
             <p class="mb-0"><strong class="pr-1">Class:</strong>4</p>
             <p class="mb-0"><strong class="pr-1">Section:</strong>A</p>
+          </div> --}}
+          {{-- course redirection --}}
+          <div class="course">
+            <label><span class="badge badge-info">Please Select your Course</span></label>
+            <select name="" class="" id="course" onchange="course_red()">
+              <option>---</option>
+              <option value="1">Node-JS</option>
+              <option value="2">Cylon-JS</option>
+            </select>
           </div>
         </div>
         {{-- logout --}}
@@ -134,4 +143,19 @@
   }
 })
     }
+</script>
+                        {{-- redirecting  --}}
+<script>
+  function course_red()
+  {
+  var course = $('#course').val();
+
+  if(course=='1'){ 
+  //window.location.href = "https://nodejs.org";
+  window.location.href = "{{route('node_home')}}";
+}else{
+  //window.location.href = "https://cylonjs.com";
+  window.location.href = "{{route('cylon_home')}}";
+  }
+}
 </script>
