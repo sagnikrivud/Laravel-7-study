@@ -54,7 +54,7 @@ class AjaxController extends Controller
     {
         $id       = Auth::user()->id;
         $password = Hash::make($request->password);
-        $result =   User::where('id',$id)->update(['password',$password]); 
+        $result =   User::where('id',$id)->update(['password' => $password]); 
             if ($result) 
             {
 

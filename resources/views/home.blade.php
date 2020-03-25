@@ -22,8 +22,8 @@
           {{-- course redirection --}}
           <div class="course">
             <label><span class="badge badge-info">Please Select your Course</span></label>
-            <select name="" class="" id="course" onchange="course_red()">
-              <option>---</option>
+            <select name="" class="" id="course" onchange="course_red()" style="width: 80px">
+              <option>-Select-</option>
               <option value="1">Node-JS</option>
               <option value="2">Cylon-JS</option>
             </select>
@@ -138,6 +138,24 @@
     swal("You have changed your password.", {
       icon: "success",
     });
+
+    // ajax part
+    var password =  $('#password').val();
+    var csrf = $('#csrf-token').attr('content');
+    //alert(password);
+    $.ajax({
+      type : "post",
+      url  : "{{route('user_update')}}",
+      data : {password:password , _token:csrf},
+      success : function(data)
+      {
+        if (data.trim()=='success') {
+          $('#password').val('');
+      //$('#msg').html('<span class="badge badge-success">Password Updated<span>');
+        }
+      }
+    })
+
   } else {
     swal("Your Password is not change..!");
   }
