@@ -253,5 +253,5 @@
 <div class="made-with-love">
   Made with
   <i>♥</i> by
-  <a target="_blank" href="https://codepen.io/nikhil8krishnan">Sagnik Dey</a>
+  <a target="_blank" href="https://facebook.com">Sagnik Dey</a>
 </div>

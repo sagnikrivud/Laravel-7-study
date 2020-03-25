@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
+use App\Subject;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+    $user_id = Auth::user()->id;
+    $subject = Subject::where('user_id',$user_id)->get();
+      //  echo $subject;
+      //  exit;
         return view('home');
     }
 }

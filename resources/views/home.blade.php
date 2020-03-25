@@ -22,8 +22,10 @@
           {{-- course redirection --}}
           <div class="course">
             <label><span class="badge badge-info">Please Select your Course</span></label>
+            
             <select name="" class="" id="course" onchange="course_red()" style="width: 80px">
               <option>-Select-</option>
+              
               <option value="1">Node-JS</option>
               <option value="2">Cylon-JS</option>
             </select>
@@ -73,6 +75,7 @@
                 <td width="2%">:</td>
                 <td><input style="background-color: #A5D8C9" type="email" name="email" readonly="" id="email" value="{{Auth::user()->email}}" onclick="allt()"></td>
               </tr>
+               <div id="msg" style="display: none;"></div>
               <tr>
                 <th width="30%">Password</th>
                 <td width="2%">:</td>
@@ -96,6 +99,10 @@
   </div>
 </div>
 </center>
+{{-- footer --}}
+<div class="footer" style="float: right;">
+  @include('layouts/footer')
+</div>
 <!-- /Student Profile -->
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -124,8 +131,21 @@
         swal("","You can't Edit your contact email","warning");
     }
 
+    // -----------update password---------//
+
     function up_password()
     {
+     var password =  $('#password').val();
+      if(password=='' || password==' ')
+      {
+
+      $('#msg').show();
+      $('#msg').html('<font color="red">Enter Charecter & Dont Use Space</font>');
+        return false;
+      }
+
+
+      // ------------------------//
         swal({
   title: "",
   text: "Are you sure to change password?",
@@ -152,12 +172,17 @@
         if (data.trim()=='success') {
           $('#password').val('');
       //$('#msg').html('<span class="badge badge-success">Password Updated<span>');
+       $('#msg').hide();
+        $('#msg').html('<span class="badge badge-warning">Enter Charecter & Dont Use Space</span>');
         }
       }
     })
 
   } else {
     swal("Your Password is not change..!");
+    $('#password').val('');
+    $('#msg').hide();
+      //  $('#msg').html('<span class="badge badge-warning">Enter Charecter & Dont Use Space</span>');
   }
 })
     }
