@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2020 at 01:06 PM
+-- Generation Time: Mar 26, 2020 at 06:09 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.2.24
 
@@ -45,6 +45,29 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, NULL, 1, 'Category 1', 'category-1', '2020-03-12 06:51:01', '2020-03-12 06:51:01'),
 (2, NULL, 1, 'Category 2', 'category-2', '2020-03-12 06:51:01', '2020-03-12 06:51:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(255) NOT NULL,
+  `name` text DEFAULT NULL,
+  `email` varchar(155) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'saga', 'sagnik.dey@envertis.com.au', 'hiii', '2020-03-20 05:40:18', '2020-03-20 05:40:18'),
+(2, 'saga', 'sagnik.dey@envertis.com.au', 'hello', '2020-03-20 05:42:08', '2020-03-20 05:42:08');
 
 -- --------------------------------------------------------
 
@@ -675,6 +698,27 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` bigint(255) NOT NULL,
+  `user_id` int(155) DEFAULT NULL,
+  `subject` varchar(155) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `user_id`, `subject`, `created_at`, `updated_at`) VALUES
+(1, 1, '-Select-', '2020-03-25 07:19:15', '2020-03-25 01:49:15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `translations`
 --
 
@@ -738,22 +782,27 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mobile` int(11) DEFAULT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
+  `gender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(40) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `settings` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `last_login` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `mobile`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', NULL, 'users/default.png', NULL, '$2y$10$iaz7KBfDPiXSqHkrGERuW.wlRHqDMZDoS9.qWk3xJPFsyu4PothKe', 'N1lvInAN0eTaVqJnzUqooZyUR5N5ntKTMvev6BG9aZO7dibcKXgwODY4eOwm', NULL, '2020-03-12 06:51:02', '2020-03-12 06:51:02'),
-(2, 2, 'gh', 'gh@mail.com', 1234567890, 'users/default.png', NULL, '12345678', NULL, NULL, '2020-03-13 05:27:35', '2020-03-13 05:27:35'),
-(4, 2, 'chdjghj', 'hghhg@mail.com', 1234567890, 'users/default.png', NULL, '$2y$10$4S1kuyXwXWZThmB88w9j/eqdQDZUeKc9Cgnb3o87P/6FOb48lje0e', NULL, NULL, '2020-03-13 05:30:21', '2020-03-13 05:30:21');
+INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `mobile`, `avatar`, `gender`, `address`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `last_login`) VALUES
+(1, 1, 'Admin', 'admin@admin.com', 987877808, 'users/default.png', 'Male', NULL, NULL, '$2y$10$JNFtVkCdVoHyBdMWnZEn5.8E9Ow90hhfGQw17Njp2yoO3N4l1C4qK', 'AIxhveXR3Z0JqnDFC44vJ1iNcDLJRUHW4lBV2iJFS6WLBAbCbFxf19oImmcI', NULL, '2020-03-12 06:51:02', '2020-03-25 01:50:25', NULL),
+(2, 2, 'gh', 'gh@mail.com', 1234567890, 'users/default.png', NULL, NULL, NULL, '12345678', NULL, NULL, '2020-03-13 05:27:35', '2020-03-13 05:27:35', NULL),
+(4, 2, 'chdjghj', 'hghhg@mail.com', 1234567890, 'users/default.png', NULL, NULL, NULL, '$2y$10$4S1kuyXwXWZThmB88w9j/eqdQDZUeKc9Cgnb3o87P/6FOb48lje0e', NULL, NULL, '2020-03-13 05:30:21', '2020-03-13 05:30:21', NULL),
+(5, 2, 'nikita', 'nikita.nik@mail.com', NULL, 'users/default.png', NULL, NULL, NULL, '$2y$10$U694tznlt3I29.eiTlyOVebOlgBwKSEJCm5zRNPJzSIN5ViUPQ0fa', NULL, NULL, '2020-03-17 06:59:36', '2020-03-25 01:52:27', NULL),
+(7, 2, 'nikita', 'nikita.ni4k@mail.com', NULL, 'users/default.png', NULL, NULL, NULL, '$2y$10$.RI13/vRWouEezg7xxMyA./GWmv1dyByEZUrndN/fzxNBIokcnpAu', NULL, NULL, '2020-03-17 07:00:39', '2020-03-17 07:00:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -777,6 +826,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_slug_unique` (`slug`),
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `data_rows`
@@ -916,6 +971,12 @@ ALTER TABLE `settings`
   ADD UNIQUE KEY `settings_key_unique` (`key`);
 
 --
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `translations`
 --
 ALTER TABLE `translations`
@@ -947,6 +1008,12 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `data_rows`
@@ -1039,6 +1106,12 @@ ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
@@ -1048,7 +1121,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
