@@ -3,6 +3,12 @@
 <div class="filter-buttons">
   <div class="list-view-button"><i class="fa fa-bars" aria-hidden="true"></i> List view</div>
   <div class="grid-view-button"><i class="fa fa-th-large" aria-hidden="true"></i> Grid view</div>
+  <div class="list-view-button">
+  {{-- <form action="{{URL::to('')}}" method="get"> --}}
+  	<form action="{{route('home')}}" method="get">
+  	<button class="btn btn-warning" type="submit">Back</button>
+  </form>
+  </div>
 </div>
 
 <ol class="list list-view-filter">

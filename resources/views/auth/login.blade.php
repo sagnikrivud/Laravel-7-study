@@ -42,16 +42,18 @@
         data    : {email:email, password:password, _token:csrftoken},
         success : function(data)
         {
-             if(data.trim()=='not')
+             if(data.trim()=='success')
              {
 
             $('#error').show();
-            $('#error').html('<strong><font color="red">Not Match</font></strong>');
+           // $('#error').html('<strong><font color="red">Not Match</font></strong>');
+           $('#error').html('<strong><font color="green">Match</font></strong>');
 
              }else{
 
             $('#error').show();
-            $('#error').html('<strong><font color="green">Match</font></strong>');
+           // $('#error').html('<strong><font color="green">Match</font></strong>');
+            $('#error').html('<strong><font color="red">Not Match</font></strong>');
              }
         }
     });

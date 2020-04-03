@@ -136,7 +136,7 @@
     function up_password()
     {
      var password =  $('#password').val();
-      if(password=='' || password==' ')
+      if(password=='' || password.trim()=='')
       {
 
       $('#msg').show();

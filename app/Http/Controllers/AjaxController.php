@@ -17,11 +17,17 @@ class AjaxController extends Controller
     	$email    = $request->email;
     	$password = Hash::make($request->password);
 
-    $user = User::where(['email'=>$email, 'password'=>$password])->get();
-    $user  = count($user);
-    $limit = '1'; 
+//$user = User::select('*')->where([
+  //  ['email', '=', $email], 
+   // ['password', '=', $password]
+     //               ])->get();
+ $user = User::select(array('email','password'))
+         ->where('email','=',$email)
+         ->where('password','=',$password)->first();       
+    //$user  = count($user);
+    //$limit = '1'; 
    // echo $user;
-    	if($user==$limit)
+    	if($user)
     	{
 
 	  echo 'success';
